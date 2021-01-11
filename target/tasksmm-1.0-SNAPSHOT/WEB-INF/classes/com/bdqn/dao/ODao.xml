@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bdqn.dao.ODao">
+    <insert id="addOrder">
+        insert into orders(oid,ordertime,total,state,address,name,telephone,uid) VALUES(#{oid},#{ordertime},#{total},#{state},#{address},#{name},#{telephone},#{uid})
+    </insert>
+
+    <insert id="addOrderItems">
+        insert into orderitem(quantity,total,pid,oid) VALUES(#{quantity},#{total},#{pid},#{oid})
+    </insert>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bdqn.dao.PDao">
+
+    <!--查询最热0-9商品-->
+    <select id="hots" resultType="com.bdqn.entity.Product">
+        select * from product WHERE is_hot=1 ORDER BY pdate DESC LIMIT 0 ,9
+    </select>
+
+    <!--查询最新0-9商品-->
+    <select id="nets" resultType="com.bdqn.entity.Product">
+        select * from product WHERE pflag=0 ORDER BY pdate DESC LIMIT 0 ,9
+    </select>
+
+    <!--查询指定的商品-->
+    <select id="pInfo" resultType="com.bdqn.entity.Product">
+        select * from product WHERE pid=#{pid}
+    </select>
+
+    <select id="pageInfo" resultType="com.bdqn.entity.Product">
+        select * from product WHERE cid=1
+    </select>
+
+</mapper>

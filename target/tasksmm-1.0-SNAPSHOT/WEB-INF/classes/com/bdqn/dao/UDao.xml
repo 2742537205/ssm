@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bdqn.dao.UDao">
+    <!--注册用户-->
+    <insert id="register">
+        insert into user(uid,username,password,name,email,telephone,birthday,sex,code)
+        values(#{uid},#{username},#{password},#{name},#{email},#{telephone},#{birthday},#{sex},#{code})
+    </insert>
+
+    <!--激活用户-->
+    <update id="activateCode">
+        UPDATE user SET state=1 where code = #{code}
+    </update>
+
+    <select id="login" resultType="string">
+        select uid from user where username = #{username} and password = #{password} and state=1
+    </select>
+</mapper>
